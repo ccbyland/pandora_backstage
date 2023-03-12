@@ -6,9 +6,14 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  find(model: string, query: any): string {
+  async find(model: string, query: any): Promise<string> {
     console.error('model', model);
     console.error('query', query);
+    await new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
     return 'find!';
   }
   findAll(): string {

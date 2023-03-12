@@ -11,8 +11,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('find')
-  find(@Query() query: any): string {
-    return this.appService.find(query.model, query.query);
+  async find(@Query() query: any): Promise<string> {
+    return await this.appService.find(query.model, query.query);
   }
 
   @Get('findAll')
