@@ -12,7 +12,7 @@ export class AppService {
     await new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
-      }, 1000);
+      }, 100);
     });
     return 'find!';
   }
