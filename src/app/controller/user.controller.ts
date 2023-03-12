@@ -1,12 +1,17 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { AppService } from '../app.service';
+import { Controller, Post, Body } from '@nestjs/common';
+import { BaseService } from '../service/base.service';
+
+interface Result {
+  message: string;
+  code: number;
+}
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly baseService: BaseService) {}
 
-  @Get('find')
-  async find(@Query() query: any): Promise<string> {
-    return await this.appService.find('uses', query.query);
+  @Post('create')
+  async create(@Body() body: any): Promise<Result> {
+    return await this.baseService.create('uses', body);
   }
 }

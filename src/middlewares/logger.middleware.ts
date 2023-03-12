@@ -4,7 +4,7 @@ export async function logger(req, res, next) {
   await new Promise<void>((resolve) => {
     setTimeout(() => {
       resolve();
-    }, 1000);
+    }, 10);
   });
   console.log(`logger end...`, Date.now() - startTime);
   await next();
